@@ -1,0 +1,9 @@
+#!/bin/sh
+ftp -n ftp.1000genomes.ebi.ac.uk <<SCRIPT
+user anonymous zhicong303@163.com
+binary
+cd vol1/ftp/data/NA18646/alignment/
+get NA18646.mapped.ILLUMINA.bwa.CHB.low_coverage.20130415.bam.bai
+get NA18646.mapped.ILLUMINA.bwa.CHB.low_coverage.20130415.bam
+quit
+SCRIPT

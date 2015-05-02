@@ -1,10 +1,12 @@
-/bin/
-/target/
-/.classpath
-/.project
-/.settings/
+# mac
+*.DS_Store
 
+# java
 *.class
+
+# python
+*.pyc
+
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
