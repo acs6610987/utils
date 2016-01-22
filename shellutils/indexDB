@@ -1,5 +1,5 @@
 #!/bin/sh
-mysql -uhzc -pacs524400951 <<SCRIPT
+mysql -uhzc -pYOUR_PASSWORD <<SCRIPT
 use genomic_raw_data;
 create index patient_position_idx on encrypted_short_read(patient_id, position);
 quit
