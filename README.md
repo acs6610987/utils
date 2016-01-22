@@ -1,17 +1,17 @@
 # Utils
 This repository contains some common codes that might be useful in your future work. The following lists will be updated as more utilities are added.
 
-## Java utils
+### Java utils
 * Cryptographic
 * Encoding and compression
 
-## Python utils
+### Python utils
 * Machine learning
 
-## Shell utils
+### Shell utils
 * Database interaction
 
-## SQL utils
+### SQL utils
 * MySQL queries
 
 # Contacts
