@@ -1,5 +1,5 @@
 #!/bin/sh
-mysql -uhzc -pacs524400951 <<SCRIPT
+mysql -uhzc -pYOUR_PASSWORD <<SCRIPT
 use genomic_raw_data
 source /home/lca1/workspace/data/load.sql
 quit
