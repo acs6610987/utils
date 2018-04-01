@@ -9,15 +9,18 @@
 #include <iostream>
 #include <sstream>
 #include "merkle_tree.h"
+#include "merkle_verifier.h"
 
 using namespace std;
 using namespace merkletree;
 
 void test_merkle_construction();
+void test_merkle_verification();
 
 int main()
 {
     test_merkle_construction();
+    test_merkle_verification();
 }
 
 vector<string> split(string s, char delim)
@@ -64,5 +67,24 @@ void test_merkle_construction()
         }
         cout << endl << endl;
     }
+}
+
+void test_merkle_verification()
+{
+    unique_ptr<SerialHasher> hasher(new Sha256Hasher());
+    MerkleTree tree(move(hasher));
+    // Build the tree on the data "Created by Zhicong Huang on 20/03/18", which are separated into a sequence of words by spaces.
+    string s("Created by Zhicong Huang on 20/03/18");
+    vector<string> data = split(s, ' ');
+    for(int i = 0; i < data.size(); i++)
+    {
+        tree.AddLeaf(data[i]);
+    }
     
+    // Verify the path from (Zhicong) to the root
+    vector<string> path = tree.PathToCurrentRoot(3);
+    MerkleVerifier verifier(unique_ptr<SerialHasher>(new Sha256Hasher()));
+    cout << "Verification result: " << verifier.VerifyPath(3, tree.LeafCount(), path, tree.CurrentRoot(), "Zhicong") << endl;
+    // Verify the same leaf but with a typo: Zhicong --> Zicong
+    cout << "Verification result: " << verifier.VerifyPath(3, tree.LeafCount(), path, tree.CurrentRoot(), "Zicong") << endl;
 }
