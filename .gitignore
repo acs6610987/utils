@@ -20,3 +20,6 @@ hs_err_pid*
 
 # python notebook checkpoint
 .ipynb_checkpoints
+
+# xcode project files
+*.xcodeproj/
